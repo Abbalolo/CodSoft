@@ -12,8 +12,8 @@ const userRouter = require("./routers/users");
 const postRouter = require("./routers/post");
 require("dotenv").config();
 
-app.use(cors());
-app.options("*", cors());
+
+
 
 const api = process.env.API_URL;
 
@@ -29,6 +29,7 @@ const connectDb = async () => {
 // Middleware to parse JSON data
 app.use(bodyParser.json());
 app.use(express.json())
+app.use(cors({origin: "http://localhost:5173",credentials:true}));
 app.use(cookieParser());
 
 // Middleware for logging HTTP requests
