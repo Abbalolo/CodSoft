@@ -22,7 +22,7 @@ const PostSchema = new mongoose.Schema({
     required: true,
   },
 
-  categorie: {
+  categories: {
     type: Array,
   },
 
@@ -30,4 +30,4 @@ const PostSchema = new mongoose.Schema({
  
 }, {timestamps: true});
 
-exports.Post = mongoose.model("Post", PostSchema);
+module.exports = mongoose.model("Post", PostSchema);
