@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
         if (err) {
             res.status(403).json("Token is not valid")
         }
-        req.useId = data.useId
+        req.userId = data._id
         next();
     })
 }

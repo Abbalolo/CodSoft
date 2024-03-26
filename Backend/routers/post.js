@@ -3,13 +3,15 @@ const router = express.Router();
 const Post = require("../models/post");
 const verifyToken = require("../verifyToken");
 
-router.post("/create", verifyToken, async (req, res) => {
+
+router.post("/create", async (req, res) => {
   try {
     const newPost = new Post(req.body);
     const savedPost = await newPost.save();
     res.status(200).json(savedPost);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err)
   }
 });
 
@@ -60,7 +62,7 @@ router.get("/",  async (req, res) => {
   }
 });
 
-router.get("/:userId", async (req, res) => {
+router.get("/user/:userId", async (req, res) => {
   try {
     const posts = await Post.find({ userId: req.params.userId });
     res.status(200).json(posts);
@@ -68,5 +70,8 @@ router.get("/:userId", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+
 
 module.exports = router;
